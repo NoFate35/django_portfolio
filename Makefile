@@ -2,22 +2,21 @@ build:
 	./build.sh
 
 render-start:
-	gunicorn task_manager.wsgi
+	gunicorn portfolio.wsgi
 
 install:
-	uv sync
+	poetry install
 
 collectstatic:
-	uv run manage.py collectstatic --noinput
+	poetry run python manage.py collectstatic --noinput
 
 migrate:
-	uv run manage.py migrate
+	poetry run python manage.py migrate
 start:
 	git pull
-	sudo service postgresql start
-	uv run manage.py runserver
+	poetry run python manage.py runserver
 test:
-	uv run python3 manage.py test task_manager
+	poetry run python manage.py test task_manager
 test-cov:
-	uv run coverage run manage.py test
-	uv run coverage xml
+	poetry run coverage run manage.py test
+	poetry run coverage xml

@@ -1,14 +1,16 @@
 [project]
-name = "ivan-portfolio"
+name = "django-portfolio"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
+authors = [
+    {name = "NoFate35",email = "vsokol35@mail.ru"}
+]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "dj-database-url>=3.0.1",
-    "django>=6.0",
-    "django-bootstrap5>=25.3",
-    "gunicorn>=23.0.0",
-    "psycopg2-binary>=2.9.11",
-    "python-dotenv>=1.2.1",
 ]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
