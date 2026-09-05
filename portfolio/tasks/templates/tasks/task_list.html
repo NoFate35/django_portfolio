@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="my-4">
+        Задачи
+    </h1>
+    <a class="btn btn-primary mb-3" href="/tasks/create/">Создать задачу</a>
+      <div class="container-md bg-body-tertiary mt-3 mb-3 border rounded-3">
+        <div class="p-3">
+          <form action="{% url 'tasks_list' %}" method="get">
+              {% csrf_token %}
+                     {% for field in form %}
+                        <div class="mb-3">
+                          {% if field.label == 'Только свои задачи' %}
+                            <div class="form-check">
+                              {{ field }}
+                              <label class="form-check-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                            </div>
+                            {% else %}
+                            <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                                {{ field }}
+                            {% endif %}
+                        </div>
+                      {% endfor %}
+              <input class="btn btn-primary" type="submit" value="Показать">
+          </form>
+        </div>
+      </div>
+       
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Имя</th>
+      <th>Статус</th>
+      <th>Автор</th>
+      <th>Исполнитель</th>
+      <th>Дата создания</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+      <tr>
+        <td>{{ task.id }}</td>
+        <td><a href="/tasks/{{ task.id }}/show/">{{ task.name }}</a></td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.author }}</td>
+        <td>{{ task.executor | default_if_none:""}}</td>
+        <td>{{ task.created_at }}</td>
+        <td>
+          <a href="/tasks/{{ task.id }}/update/">Изменить</a>
+          <br>
+          <a href="/tasks/{{ task.id }}/delete/">Удалить</a>
+        </td>
+      </tr>
+     {% endfor %}
+  </tbody>
+</table>
+    {% endblock %}

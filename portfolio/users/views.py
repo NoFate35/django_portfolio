@@ -1,0 +1,84 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.edit import BaseCreateView
+from django.views.generic import ListView
+from django.contrib.auth.models import User
+from django.views import View
+from .forms import RegisterUserForm, UpdateUserForm
+from django.contrib import messages
+from django.db.models.deletion import ProtectedError
+from task_manager.mixins.user_pass import CustomUserPassesTestMixin
+
+
+class UserListView(ListView):
+    model = User
+    template_name = "users/user_list.html"
+    context_object_name = "users"
+
+    def get_queryset(self, *kwargs):
+        return User.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class UserCreateView(BaseCreateView):
+    def get(self, request, *args, **kwargs):
+        form = RegisterUserForm()
+        return render(request, "users/create_form.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                "Пользователь успешно зарегистрирован",
+            )
+            return redirect("login")
+        return render(request, "users/create_form.html", {"form": form})
+
+
+class UserFormUpdateView(CustomUserPassesTestMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = get_object_or_404(User, pk=kwargs["pk"])
+        form = UpdateUserForm(instance=user)
+        return render(request, "users/create_form.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        user = get_object_or_404(User, pk=kwargs["pk"])
+        form = UpdateUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.add_message(
+                request, messages.SUCCESS, "Пользователь успешно изменен"
+            )
+            return redirect("users_list")
+        return render(request, "users/create_form.html", {"form": form})
+
+
+class UserDeleteView(CustomUserPassesTestMixin, View):
+    def get(self, request, *args, **kwargs):
+        user = get_object_or_404(User, pk=kwargs["pk"])
+        return render(request, "users/delete.html", {"user": user})
+
+    def post(self, request, *args, **kwargs):
+        user = get_object_or_404(User, pk=kwargs["pk"])
+        if user:
+            try:
+                user.delete()
+                messages.add_message(
+                    request, messages.SUCCESS, "Пользователь успешно удален"
+                )
+            except ProtectedError:
+                message = (
+                    "Невозможно удалить пользователя,"
+                    " потому что он используется"
+                )
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    message,
+                )
+            return redirect("users_list")
