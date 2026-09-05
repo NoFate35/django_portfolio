@@ -1,6 +1,6 @@
 from django.db import models
-from task_manager.statuses.models import Status
-from task_manager.labels.models import Label
+from portfolio.task_manager.statuses.models import Status
+from portfolio.task_manager.labels.models import Label
 from django.contrib.auth.models import User
 
 # Create your models here.
