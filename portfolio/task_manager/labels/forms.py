@@ -1,4 +1,4 @@
-from task_manager.labels.models import Label
+from portfolio.task_manager.labels.models import Label
 from django import forms
 
 

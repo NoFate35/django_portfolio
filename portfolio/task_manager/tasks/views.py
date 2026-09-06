@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import BaseCreateView
 from django.views.generic import ListView
-from task_manager.tasks.models import Task
+from portfolio.task_manager.tasks.models import Task
 from django.views import View
 from .forms import TaskCreateForm, TaskFilterForm
 from django.contrib import messages
-from task_manager.mixins.login import CustomLoginRequieredMixin
+from portfolio.mixins.login import CustomLoginRequieredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 

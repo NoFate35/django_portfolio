@@ -1,4 +1,4 @@
-from task_manager.statuses.models import Status
+from portfolio.task_manager.statuses.models import Status
 from django import forms
 
 

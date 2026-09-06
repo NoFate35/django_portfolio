@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import BaseCreateView
 from django.views.generic import ListView
-from task_manager.labels.models import Label
+from portfolio.task_manager.labels.models import Label
 from django.views import View
 from .forms import LabelCreateForm
 from django.contrib import messages
-from task_manager.mixins.login import CustomLoginRequieredMixin
+from portfolio.mixins.login import CustomLoginRequieredMixin
 
 
 class LabelListView(CustomLoginRequieredMixin, ListView):

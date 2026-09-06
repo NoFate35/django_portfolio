@@ -6,7 +6,7 @@ from django.views import View
 from .forms import RegisterUserForm, UpdateUserForm
 from django.contrib import messages
 from django.db.models.deletion import ProtectedError
-from task_manager.mixins.user_pass import CustomUserPassesTestMixin
+from portfolio.mixins.user_pass import CustomUserPassesTestMixin
 
 
 class UserListView(ListView):

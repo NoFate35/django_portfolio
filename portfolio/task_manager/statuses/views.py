@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import BaseCreateView
 from django.views.generic import ListView
-from task_manager.statuses.models import Status
+from portfolio.task_manager.statuses.models import Status
 from django.views import View
 from .forms import StatusCreateForm
 from django.contrib import messages
 from django.db.models.deletion import ProtectedError
-from task_manager.mixins.login import CustomLoginRequieredMixin
+from portfolio.mixins.login import CustomLoginRequieredMixin
 
 
 class StatusListView(CustomLoginRequieredMixin, ListView):

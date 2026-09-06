@@ -102,6 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATIC_URL = 'portfolio/static/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
