@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from portfolio.task_manager import views
-from portfolio.web_card.views import render_webcard
+from portfolio.webcard.views import render_webcard
+from portfolio.webstore.views import render_webstore
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path("login/", views.LoginUserView.as_view(), name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("webcard/", render_webcard, name="webcard"),
+    path("webstore/", render_webstore, name="webstore"),
 ]

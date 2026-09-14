@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     "portfolio.task_manager.statuses",
     "portfolio.task_manager.tasks",
     "portfolio.task_manager.labels",
-    "portfolio.web_card",
+    "portfolio.webcard",
+    "portfolio.webstore",
 ]
 
 MIDDLEWARE = [
