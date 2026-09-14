@@ -14,7 +14,6 @@ migrate:
 	poetry run python manage.py migrate
 
 start:
-	git pull
 	poetry run python manage.py runserver
 test:
 	poetry run python manage.py test portfolio.task_manager

@@ -13,5 +13,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", views.LoginUserView.as_view(), name="login"),
     path("logout/", views.logout_view, name="logout"),
-    path("webcard", render_webcard, name="webcard"),
+    path("webcard/", render_webcard, name="webcard"),
 ]
