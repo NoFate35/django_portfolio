@@ -3,12 +3,23 @@
 {% block content %}
   <h1 class="my-4"></h1>
   <h1 class="my-4"></h1>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+     <p><a href="{% url 'webcard' %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Небольшое портфолио</a></p>
+    </div>
+    <div class="col">
+     <p><a href="{% url 'webstore' %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Интернет-магазин</a></p>
+    </div> <!-- 4 + 8 = 12 -->
+  </div>
+</div>
+
 <div class="card">
   <div class="card-body p-5 bg-light">
     <div class="display-4">Привет от Вани!</div>
     <p class="lead">Практические курсы по программированию</p>
-    <a class="nav-link" href="{% url 'webcard' %}">Небольшое портфолио</a>
-    <a class="nav-link" href="{% url 'webstore' %}">Интернет-магазин</a>
+    <a class="nav-link" href=>Небольшое портфолио</a>
+    <a class="nav-link" href=>Интернет-магазин</a>
           
     <hr>
     <a class="btn btn-primary btn-lg" href="/users/create/">Узнать больше</a>

@@ -5,5 +5,5 @@ from django.shortcuts import render
 def render_webcard(request):
     return render(
         request,
-        "web_card/web_card.html"
+        "webcard/webcard.html"
     )

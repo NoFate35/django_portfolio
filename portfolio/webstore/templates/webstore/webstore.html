@@ -1,26 +1,178 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Подключение Bootstrap</title>
-	{% load static %}
-    <link rel="stylesheet" href= "{% static 'bootstrap/css/bootstrap-grid.min.css' %}" />
-    <link rel="stylesheet" href= "{% static 'bootstrap/css/bootstrap-utilities.min.css' %}"/>
-  </head>
-  <body>
-        <nav class="site-header sticky-top py-1">
-  <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#" aria-label="Product">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewbox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-    </a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Тур</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Товар</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Особенности</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Поддержка</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Цены</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Корзина</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пекарня «Пирогофф №1» — свежая выпечка из печи</title>
+  {% load static %}
+  <link rel="stylesheet" href= "{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+  <style>
+    .top-bar { background-color: #f8f9fa; font-size: 0.9rem; }
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #b35c00 !important; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200') center/cover; color: white; padding: 100px 0; }
+    .product-card { transition: transform 0.2s; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .product-img { height: 200px; object-fit: cover; }
+    .footer { background-color: #2c2c2c; color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- Верхняя панель с контактами -->
+  <div class="top-bar py-2 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex gap-3">
+        <span>📞 <a href="tel:+79268527142" class="text-decoration-none text-dark">+7 (926) 852-71-42</a></span>
+        <span class="d-none d-md-inline">📍 Подольск, мкрн. Климовск, ул. Победы, 4А</span>
+      </div>
+      <div class="d-flex gap-3">
+        <span class="d-none d-sm-inline">🕐 Пн–Пт 08:00–20:00 | Сб–Вс 09:00–20:00</span>
+        <a href="#" class="text-decoration-none text-dark">Корзина пуста</a>
+      </div>
+    </div>
   </div>
-</nav>
-  </body>
+
+  <!-- Навигация -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ПИРОГОФФ №1</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Пироги</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Торты</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Пицца</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Главный баннер -->
+  <section class="hero text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">Свежая горячая выпечка из печи</h1>
+      <p class="lead mb-4">Пироги, торты на заказ, пицца — прямо из печи к вашему столу</p>
+      <a href="#catalog" class="btn btn-warning btn-lg px-5 py-3 fw-bold">Заказать сейчас</a>
+    </div>
+  </section>
+
+  <!-- Каталог товаров -->
+  <section id="catalog" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Наша продукция</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card product-card h-100 border-0 shadow-sm">
+            <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400" class="card-img-top product-img" alt="Пирог">
+            <div class="card-body text-center">
+              <h5 class="card-title">Пирог с яблоками</h5>
+              <p class="card-text text-muted">Ароматная выпечка с корицей</p>
+              <p class="fw-bold fs-5">450 ₽</p>
+              <button class="btn btn-outline-warning w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card h-100 border-0 shadow-sm">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" class="card-img-top product-img" alt="Пицца">
+            <div class="card-body text-center">
+              <h5 class="card-title">Пицца «Маргарита»</h5>
+              <p class="card-text text-muted">Классическая с томатами и базиликом</p>
+              <p class="fw-bold fs-5">590 ₽</p>
+              <button class="btn btn-outline-warning w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card h-100 border-0 shadow-sm">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" class="card-img-top product-img" alt="Торт">
+            <div class="card-body text-center">
+              <h5 class="card-title">Торт «Медовик»</h5>
+              <p class="card-text text-muted">Нежные коржи со сметанным кремом</p>
+              <p class="fw-bold fs-5">1 200 ₽</p>
+              <button class="btn btn-outline-warning w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Преимущества -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="fs-1">🔥</div>
+          <h5 class="mt-2">Всегда горячее</h5>
+          <p class="text-muted">Выпечка попадает к вам прямо из печи</p>
+        </div>
+        <div class="col-md-4">
+          <div class="fs-1">🌾</div>
+          <h5 class="mt-2">Только свежие продукты</h5>
+          <p class="text-muted">Натуральные ингредиенты без консервантов</p>
+        </div>
+        <div class="col-md-4">
+          <div class="fs-1">🚚</div>
+          <h5 class="mt-2">Быстрая доставка</h5>
+          <p class="text-muted">Привезём заказ в течение часа</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Подвал -->
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h6 class="text-white">DONUTERIA</h6>
+          <p class="small">Свежая выпечка из печи с 2010 года</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6 class="text-white">Контакты</h6>
+          <p class="small mb-1">📞 +7 (999) 999-99-99</p>
+          <p class="small mb-1">✉️ n.firsova20021960@gmail.com</p>
+          <p class="small">📍 Подольск, мкрн. Климовск, ул. Победы, 4А</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6 class="text-white">Режим работы</h6>
+          <p class="small mb-1">Пн–Пт: 08:00–20:00</p>
+          <p class="small">Сб–Вс: 09:00–20:00</p>
+        </div>
+      </div>
+      <hr class="border-secondary">
+      <p class="text-center small mb-0">© 2026 Пекарня «Пирогофф №1». Все права защищены.</p>
+    </div>
+  </footer>
+
+ <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <!-- Нижняя фиксированная панель -->
+<div class="fixed-bottom bg-white border-top shadow-lg d-md-none">
+  <div class="container-fluid py-2">
+    <div class="row g-2">
+      <div class="col-6">
+        <a href="#cart" class="btn btn-warning w-100 fw-bold">
+          🛒 Корзина <span class="badge bg-dark ms-1">3</span>
+        </a>
+      </div>
+      <div class="col-6">
+        <a href="tel:+79999999999" class="btn btn-outline-dark w-100 fw-bold">
+          📞 Позвонить
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Отступ для контента, чтобы панель не перекрывала подвал -->
+<style>
+  body { padding-bottom: 70px; }
+  @media (min-width: 768px) { body { padding-bottom: 0; } }
+</style>
+</body>
 </html>
