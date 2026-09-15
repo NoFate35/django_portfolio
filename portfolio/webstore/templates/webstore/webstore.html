@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Пекарня «Пирогофф №1» — свежая выпечка из печи</title>
+  <title>Пекарня «DONUTERIA» — свежая выпечка из печи</title>
   {% load static %}
   <link rel="stylesheet" href= "{% static 'bootstrap/css/bootstrap.min.css' %}"/>
   <style>
     .top-bar { background-color: #f8f9fa; font-size: 0.9rem; }
     .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #b35c00 !important; }
-    .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200') center/cover; color: white; padding: 100px 0; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("{% static 'webstore/Screenshot_20260915_092900_2GIS.jpg' %}") center/cover; color: white; padding: 100px 0; }
     .product-card { transition: transform 0.2s; }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     .product-img { height: 200px; object-fit: cover; }
@@ -20,31 +20,27 @@
 
   <!-- Верхняя панель с контактами -->
   <div class="top-bar py-2 border-bottom">
-    <div class="container d-flex flex-wrap justify-content-between align-items-center">
-      <div class="d-flex gap-3">
-        <span>📞 <a href="tel:+79268527142" class="text-decoration-none text-dark">+7 (926) 852-71-42</a></span>
-        <span class="d-none d-md-inline">📍 Подольск, мкрн. Климовск, ул. Победы, 4А</span>
-      </div>
-      <div class="d-flex gap-3">
-        <span class="d-none d-sm-inline">🕐 Пн–Пт 08:00–20:00 | Сб–Вс 09:00–20:00</span>
-        <a href="#" class="text-decoration-none text-dark">Корзина пуста</a>
-      </div>
+    <div class="container d-flex gap-3">
+        <span class="col">📞 <a href="tel:+79268527142" class="text-decoration-none text-dark">+7 (999) 999-99-99</a></span>
+        <span class="col d-none d-md-inline">📍 Коммунистический проспект, 19, 143041, Голицыно, Одинцовский городской округ, Московская область, 3 этажа</span>
+        <span class="col d-none d-sm-inline">🕐 Пн–Пт 08:00–20:00 | Сб–Вс 09:00–20:00</span>
+        <a href="#" class="col text-decoration-none text-dark text-end">Корзина пуста</a>
     </div>
   </div>
 
   <!-- Навигация -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#">ПИРОГОФФ №1</a>
+      <a class="navbar-brand" href="#">DONUTERIA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Пироги</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Пирожные</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Торты</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Пицца</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Печенье</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
         </ul>
       </div>
@@ -55,7 +51,7 @@
   <section class="hero text-center">
     <div class="container">
       <h1 class="display-4 fw-bold mb-3">Свежая горячая выпечка из печи</h1>
-      <p class="lead mb-4">Пироги, торты на заказ, пицца — прямо из печи к вашему столу</p>
+      <p class="lead mb-4">Пирожные, торты и печенье на заказ — прямо из печи к вашему столу</p>
       <a href="#catalog" class="btn btn-warning btn-lg px-5 py-3 fw-bold">Заказать сейчас</a>
     </div>
   </section>
@@ -67,9 +63,9 @@
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card product-card h-100 border-0 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400" class="card-img-top product-img" alt="Пирог">
+            <img src="{% static 'webstore/Screenshot_20260915_092835_2GIS.jpg' %}" class="card-img-top product-img" alt="Эклер">
             <div class="card-body text-center">
-              <h5 class="card-title">Пирог с яблоками</h5>
+              <h5 class="card-title">Эклеры</h5>
               <p class="card-text text-muted">Ароматная выпечка с корицей</p>
               <p class="fw-bold fs-5">450 ₽</p>
               <button class="btn btn-outline-warning w-100">В корзину</button>
@@ -78,10 +74,10 @@
         </div>
         <div class="col-md-4">
           <div class="card product-card h-100 border-0 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" class="card-img-top product-img" alt="Пицца">
+           <img src="{% static 'webstore/Screenshot_20260915_092847_2GIS.jpg' %}" class="card-img-top product-img" alt="Эклер">
             <div class="card-body text-center">
-              <h5 class="card-title">Пицца «Маргарита»</h5>
-              <p class="card-text text-muted">Классическая с томатами и базиликом</p>
+              <h5 class="card-title">Печенье «Маргарита»</h5>
+              <p class="card-text text-muted">Классические с маслом</p>
               <p class="fw-bold fs-5">590 ₽</p>
               <button class="btn btn-outline-warning w-100">В корзину</button>
             </div>
@@ -89,7 +85,7 @@
         </div>
         <div class="col-md-4">
           <div class="card product-card h-100 border-0 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" class="card-img-top product-img" alt="Торт">
+            <img src="{% static 'webstore/Screenshot_20260915_092842_2GIS.jpg' %}" class="card-img-top product-img" alt="Торт медовик">
             <div class="card-body text-center">
               <h5 class="card-title">Торт «Медовик»</h5>
               <p class="card-text text-muted">Нежные коржи со сметанным кремом</p>
@@ -136,8 +132,8 @@
         <div class="col-md-4 mb-3">
           <h6 class="text-white">Контакты</h6>
           <p class="small mb-1">📞 +7 (999) 999-99-99</p>
-          <p class="small mb-1">✉️ n.firsova20021960@gmail.com</p>
-          <p class="small">📍 Подольск, мкрн. Климовск, ул. Победы, 4А</p>
+          <p class="small mb-1">✉️ yyyyyyyy@gmail.com</p>
+          <p class="small">📍Коммунистический проспект, 19, 143041, Голицыно, Одинцовский городской округ, Московская область, 3 этажа</p>
         </div>
         <div class="col-md-4 mb-3">
           <h6 class="text-white">Режим работы</h6>
@@ -146,7 +142,7 @@
         </div>
       </div>
       <hr class="border-secondary">
-      <p class="text-center small mb-0">© 2026 Пекарня «Пирогофф №1». Все права защищены.</p>
+      <p class="text-center small mb-0">© 2026 Пекарня «DONUTERIA». Все права защищены.</p>
     </div>
   </footer>
 
